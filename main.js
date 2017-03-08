@@ -27,11 +27,12 @@ function setTimer() {
 
 
 function displayCurrentTime() {
-  const end = new Date();
-  const hour = end.getHours();
+  const time = new Date();
+  const hour = time.getHours();
   const adjustedHour = hour > 12 ? hour - 12 : hour;
-  const minutes = end.getMinutes();
-  clock.textContent = `${adjustedHour}:${minutes < 10 ? '0' : ''}${minutes}`;
+  const beforeNoon = hour > 12 ? 'PM' : 'AM';
+  const minutes = time.getMinutes();
+  clock.textContent = `${adjustedHour}:${minutes < 10 ? '0' : ''}${minutes} ${beforeNoon}`;
 }
 
 displayCurrentTime();
