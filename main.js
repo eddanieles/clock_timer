@@ -2,6 +2,7 @@ const countdown = document.querySelector('.countdown');
 const timer = document.querySelector('.timer');
 const clock = document.querySelector('.clock');
 const startBtn = document.querySelector('.startBtn');
+const fullScreen = document.querySelector('.glyphicon-fullscreen');
 
 startBtn.addEventListener('click', setTimer)
 
@@ -36,4 +37,9 @@ function displayCurrentTime() {
 }
 
 displayCurrentTime();
-setInterval(displayCurrentTime, 1000)
+setInterval(displayCurrentTime, 1000);
+
+fullScreen.addEventListener('click', () => {
+  timer.style.width = '100%';
+  timer.style.height = '100%';
+});
