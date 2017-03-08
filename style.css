@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+
+}
+
+.display {
+  font-size: 400%;
+  color: silver;
+  background: linear-gradient( 0deg, black, grey 40%, black );
+  font-family:'digital-clock-font';
+}
