@@ -15,7 +15,7 @@ body {
 }
 
 .timer {
-  display: inline-block;
+  display: inline;
 }
 
 .glyphicon {
@@ -25,4 +25,11 @@ body {
 
 .glyphicon:hover {
   transform: scale(1.5);
+}
+
+
+.timer:-webkit-full-screen {
+    background-color: rgba(255,255,255,0);
+    color: white;
+    font-size: 400%;
 }

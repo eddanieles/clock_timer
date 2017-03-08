@@ -40,6 +40,5 @@ displayCurrentTime();
 setInterval(displayCurrentTime, 1000);
 
 fullScreen.addEventListener('click', () => {
-  timer.style.width = '100%';
-  timer.style.height = '100%';
+  timer.webkitRequestFullscreen();
 });
