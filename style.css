@@ -1,11 +1,15 @@
 body {
   text-align: center;
+  background: linear-gradient( 0deg, black, grey 40%, black );
+}
 
+@font-face {
+ font-family:'digital-clock-font';
+ src: url('digital-7.regular.ttf');
 }
 
 .display {
   font-size: 400%;
-  color: silver;
-  background: linear-gradient( 0deg, black, grey 40%, black );
+  color: white;
   font-family:'digital-clock-font';
 }
