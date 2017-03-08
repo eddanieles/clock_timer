@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background: linear-gradient( 0deg, black, grey 40%, black );
+  background: linear-gradient( 0deg, black, grey 50%, black );
 }
 
 @font-face {
@@ -14,8 +14,8 @@ body {
   font-family:'digital-clock-font';
 }
 
-.timer {
-  display: inline;
+.timer_display > p,span{
+  display: inline-flex;
 }
 
 .glyphicon {
