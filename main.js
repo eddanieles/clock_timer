@@ -1,31 +1,43 @@
-const countdown = document.querySelector('.countdown');
 const timer = document.querySelector('.timer');
 const clock = document.querySelector('.clock');
 const startBtn = document.querySelector('.startBtn');
 const fullScreen = document.querySelector('.glyphicon-fullscreen');
+const stopBtn = document.querySelector('.stopBtn');
+let countdown;
 
-startBtn.addEventListener('click', setTimer)
+startBtn.addEventListener('click', setTimer);
+stopBtn.addEventListener('click', stopTimer);
 
 let startSeconds = -5;
 
 timer.textContent = `-00:00:05`;
 
 function setTimer() {
-  let seconds = startSeconds % 60;
-  let minutes = startSeconds/60 < 0 ? 0 : Math.floor(startSeconds/60);
-  let hours = startSeconds/3600 < 0 ? 0 : Math.floor(startSeconds/3600)
-  if (startSeconds < 0) {
-    let adjustedSeconds = startSeconds * -1;
-    timer.textContent = `-0${hours}:0${minutes}:${adjustedSeconds < 10 ? `0${adjustedSeconds}` : `${adjustedSeconds}`} `
-  } else {
-    timer.textContent = `${hours < 10 ? `0${hours}` : `${hours}`}:${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds < 10 ? `0${seconds}` : `${seconds}`}`;
-  }
+  const now = Date.now();
+  const then = now - startSeconds * 1000;
+  countdown = setInterval(() => {
+    const seconds = Math.round((then - Date.now())/1000);
+    displayTimer(seconds * -1);
+  }, 1000);
 
-  startSeconds++;
-  setTimeout(setTimer, 1000);
 }
 
+function displayTimer(time) {
+  let seconds = time % 60;
+  let minutes = time/60 < 0 ? 0 : Math.floor(time/60);
+  let hours = time/3600 < 0 ? 0 : Math.floor(time/3600);
+  if (time < 0) {
+    let adjustedSeconds = seconds * -1;
+    timer.textContent = `-0${hours}.0${minutes}.${adjustedSeconds < 10 ? '0' : ''}${adjustedSeconds}`
+  } else {
+    timer.textContent = `${hours < 10 ? '0' : ''}${hours}.${minutes < 10 ? '0' : ''}${minutes}.${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+}
 
+function stopTimer() {
+  clearInterval(countdown);;
+  return;
+}
 
 function displayCurrentTime() {
   const time = new Date();
