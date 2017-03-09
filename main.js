@@ -1,16 +1,18 @@
 const timer = document.querySelector('.timer');
+const milli = document.querySelector('.milli');
 const clock = document.querySelector('.clock');
 const startBtn = document.querySelector('.startBtn');
 const fullScreen = document.querySelector('.glyphicon-fullscreen');
 const stopBtn = document.querySelector('.stopBtn');
-let countdown;
+let countdown, countdown2;
 
 startBtn.addEventListener('click', setTimer);
 stopBtn.addEventListener('click', stopTimer);
 
 let startSeconds = -5;
 
-timer.textContent = `-00:00:05`;
+timer.textContent = '-00.00.05';
+milli.textContent = '.000';
 
 function setTimer() {
   const now = Date.now();
@@ -19,7 +21,10 @@ function setTimer() {
     const seconds = Math.round((then - Date.now())/1000);
     displayTimer(seconds * -1);
   }, 1000);
-
+  countdown2 = setInterval(() => {
+    const milliSecs = (then - Date.now())/1000;
+    displayMilli(milliSecs * -1);
+  }, 1);
 }
 
 function displayTimer(time) {
@@ -34,8 +39,16 @@ function displayTimer(time) {
   }
 }
 
+function displayMilli(time) {
+  let milliSecs = (time % 1).toFixed(3).replace(/^0+|^-0+/, '');
+  //console.log(milliSecs);
+  milli.textContent = `${milliSecs}`
+
+}
+
 function stopTimer() {
-  clearInterval(countdown);;
+  clearInterval(countdown);
+  clearInterval(countdown2);
   return;
 }
 

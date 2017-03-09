@@ -18,6 +18,10 @@ body {
   display: inline-flex;
 }
 
+.milli {
+  font-size: 15%;
+}
+
 .glyphicon {
   font-size: 25%;
   transition: all 0.3 ease-in-out;
